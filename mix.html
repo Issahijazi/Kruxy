@@ -456,6 +456,7 @@ header {
   left: 0;
   display: flex;
   flex-direction: column-reverse;
+  height: 100%;
 }
 
 .box-layer {
@@ -464,6 +465,7 @@ header {
   color: #fff;
   font-size: 13px;
   font-weight: bold;
+   text-shadow: 0 0 2px rgba(0,0,0,0.6);
 }
 
 .box-summary {
@@ -667,7 +669,6 @@ header {
     padding: 6px 10px;
   }
 }
-
 /* UNIVERSAL FIX FOR OVERFLOW */
 * {
   box-sizing: border-box;
@@ -679,11 +680,14 @@ html, body {
   overflow-x: hidden; /* 💥 Prevent horizontal scrolling */
   max-width: 100vw;    /* 💥 Prevent content from exceeding screen width */
 }
+
 .cart-panel #cartItems {
   max-height: calc(100vh - 200px); /* Leaves space for title, total, and buttons */
   overflow-y: auto;
   padding-right: 5px; /* optional scrollbar spacing */
 }
+
+
 
 </style>
 <body>
@@ -697,7 +701,7 @@ html, body {
     </div>
 
     <div class="logo">
-     <img src="logo.png" alt="Kruxy Logo" />
+      <a href="index.html"><img src="logo.png" alt="Kruxy Logo" /></a>
     </div>
 
     <nav class="navbar">
@@ -763,7 +767,7 @@ html, body {
       <img src="cashew.webp" alt="Cashew" />
       <h4>Cashew</h4>
       <p class="price">Price: $2.00 / 100g</p>
-      <button onclick="addToCustomBox({name: 'Cashew', color: '#f5deb3', pricePer100g: 2.00, image: 'cashew.webp'})">Add to Box</button>
+      <button onclick="addToCustomBox({name: 'Cashew', color: '#a5deb3', pricePer100g: 2.00, image: 'cashew.webp'})">Add to Box</button>
     </div>
 
     <div class="nut-card">
@@ -789,26 +793,18 @@ html, body {
     </div>
 
     <div class="nut-card">
-  <img src="walnuts.png" alt="Walnuts" />
-  <h4>Walnuts</h4>
-  <p class="price">Price: $2.90 / 100g</p>
-  <button onclick="addToCustomBox({name: 'Walnuts', color: '#d9c7b1', pricePer100g: 2.90, image: 'walnuts.png'})">Add to Box</button>
+  <img src="krikri1.png" alt="Krikri Classic" />
+  <h4>Krikri Classic</h4>
+  <p class="price">Price: $1.90 / 100g</p>
+  <button onclick="addToCustomBox({name: 'Krikri Classic', color: '#d9c7a1', pricePer100g: 1.90, image: 'krikri1.png'})">Add to Box</button>
 </div>
 
 <div class="nut-card">
-  <img src="macadamia.jpg" alt="Macadamia" />
-  <h4>Macadamia</h4>
-  <p class="price">Price: $3.20 / 100g</p>
-  <button onclick="addToCustomBox({name: 'Macadamia', color: '#f98c4b', pricePer100g: 3.20, image: 'macadamia.jpg'})">Add to Box</button>
+  <img src="krikri2.png" alt="Krikri Spicy" />
+  <h4>Krikri Spicy</h4>
+  <p class="price">Price: $2.20 / 100g</p>
+  <button onclick="addToCustomBox({name: 'Krikri Spicy', color: '#c98c4b', pricePer100g: 2.20, image: 'krikri2.png'})">Add to Box</button>
 </div>
-
-<div class="nut-card">
-  <img src="peanut.webp" alt="Peanuts" />
-  <h4>Peanuts</h4>
-  <p class="price">Price: $1.20 / 100g</p>
-  <button onclick="addToCustomBox({name: 'Peanuts', color: '#e98c4b', pricePer100g: 1.20, image: 'peanut.webp'})">Add to Box</button>
-</div>
-
 
     <!-- You can add more nut cards here... -->
   </div>
@@ -882,6 +878,7 @@ html, body {
 <!-- JS -->
 <script src="mix.js"></script>
 <script>
+// =================== NAVBAR / CART / LOGIN ===================
 function toggleMenu() {
   document.querySelector(".navbar").classList.toggle("active");
 }
@@ -894,7 +891,17 @@ function toggleLoginModal() {
   alert("Login functionality coming soon.");
 }
 
+// =================== CART LOGIC ===================
 let cart = [];
+
+function loadCart() {
+  const storedCart = localStorage.getItem('kruxyCart');
+  cart = storedCart ? JSON.parse(storedCart) : [];
+}
+
+function saveCart() {
+  localStorage.setItem('kruxyCart', JSON.stringify(cart));
+}
 
 function updateCartDisplay() {
   const container = document.getElementById("cartItems");
@@ -942,15 +949,6 @@ function shareCart() {
   window.open(link, "_blank");
 }
 
-function saveCart() {
-  localStorage.setItem('kruxyCart', JSON.stringify(cart));
-}
-
-function loadCart() {
-  const storedCart = localStorage.getItem('kruxyCart');
-  cart = storedCart ? JSON.parse(storedCart) : [];
-}
-
 function initCart() {
   loadCart();
   updateCartDisplay();
@@ -966,118 +964,30 @@ function togglePaymentOptions() {
   if (panel) panel.classList.toggle("hidden");
 }
 
-document.addEventListener("DOMContentLoaded", initCart);
-let selectedBoxSize = 0;
-
-function selectBoxSize(size) {
-  selectedBoxSize = size;
-  alert(`Box size selected: ${size}g`);
-  // Step 2 logic will hook into this size
-}
+// =================== CUSTOM BOX BUILDER ===================
 let customBox = {
   size: 0,
-  contents: [], // { name, grams, color, pricePer100g }
+  contents: [], // { name, grams, color, pricePer100g, image }
 };
 
 function selectBoxSize(size) {
-  selectedBoxSize = size;
-  document.getElementById("boxMaxWeight").textContent = size;
   customBox.size = size;
   customBox.contents = [];
+  document.getElementById("boxMaxWeight").textContent = size;
   updateCustomBoxUI();
-}
-
-function updateCustomBoxUI() {
-  const fill = document.getElementById("boxFill");
-  const summaryList = document.getElementById("boxSummaryList");
-  const totalGrams = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
-  const totalPrice = customBox.contents.reduce((sum, item) => sum + (item.grams * item.pricePer100g / 100), 0);
-
-  // Clear previous summary
-  summaryList.innerHTML = '';
-  fill.innerHTML = '';
-
- customBox.contents.forEach(item => {
-  // Create list item with + and - buttons
-  const li = document.createElement("li");
-  li.style.display = "flex";
-  li.style.justifyContent = "space-between";
-  li.style.alignItems = "center";
-
-  // Nut image
-  const img = document.createElement("img");
-  img.src = item.image || "default.png";
-  img.alt = item.name;
-  img.style.width = "30px";
-  img.style.height = "30px";
-  img.style.objectFit = "contain";
-  img.style.marginRight = "8px";
-  img.style.borderRadius = "4px";
-
-  // Nut name and grams text
-  const textSpan = document.createElement("span");
-  textSpan.textContent = `${item.name}: ${item.grams}g`;
-  textSpan.style.flexGrow = "1";
-
-  // Buttons container
-  const btnContainer = document.createElement("span");
-
-  // Minus button
-  const minusBtn = document.createElement("button");
-  minusBtn.textContent = "−"; // minus sign
-  minusBtn.style.marginRight = "8px";
-  minusBtn.style.cursor = "pointer";
-  minusBtn.style.width = "24px";
-  minusBtn.style.height = "24px";
-  minusBtn.style.borderRadius = "4px";
-  minusBtn.onclick = () => decrementNut(item.name);
-
-  // Plus button
-  const plusBtn = document.createElement("button");
-  plusBtn.textContent = "+";
-  plusBtn.style.cursor = "pointer";
-  plusBtn.style.width = "24px";
-  plusBtn.style.height = "24px";
-  plusBtn.style.borderRadius = "4px";
-  plusBtn.onclick = () => incrementNut(item.name);
-
-  btnContainer.appendChild(minusBtn);
-  btnContainer.appendChild(plusBtn);
-
-  li.appendChild(img);
-  li.appendChild(textSpan);
-  li.appendChild(btnContainer);
-
-  summaryList.appendChild(li);
-
-  // Update box fill layers (height % by grams / box size)
-  const heightPercent = (item.grams / customBox.size) * 100;
-  const div = document.createElement("div");
-  div.className = 'box-layer';
-  div.style.height = `${heightPercent}%`;
-  div.style.backgroundColor = item.color;
-  div.textContent = item.name;
-  fill.appendChild(div);
-});
-
-
-  document.getElementById("boxTotalWeight").textContent = totalGrams;
-  document.getElementById("boxTotalPrice").textContent = totalPrice.toFixed(2);
+  showAlert(`Box size selected: ${size}g`);
 }
 
 function addToCustomBox(nut) {
-  if (!customBox.size) return showAlert("Please select a box size first!")
+  if (!customBox.size) return showAlert("Please select a box size first!");
 
-;
-
-  const total = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
-  const remaining = customBox.size - total;
-
-  if (remaining <= 0) return showAlert("Your Box is FUll !");
+  const totalGrams = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
+  const remaining = customBox.size - totalGrams;
+  if (remaining <= 0) return showAlert("Your Box is Full!");
 
   const addGrams = Math.min(remaining, 100); // add 100g at a time
-  const existing = customBox.contents.find(i => i.name === nut.name);
 
+  let existing = customBox.contents.find(i => i.name === nut.name);
   if (existing) {
     existing.grams += addGrams;
   } else {
@@ -1093,13 +1003,124 @@ function addToCustomBox(nut) {
   updateCustomBoxUI();
 }
 
+function incrementNut(nutName) {
+  const totalGrams = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
+  if (totalGrams >= customBox.size) {
+    showAlert("Box is already full!");
+    return;
+  }
+  const item = customBox.contents.find(i => i.name === nutName);
+  if (!item) return;
+
+  const remaining = customBox.size - totalGrams;
+  const addAmount = Math.min(25, remaining);
+  item.grams += addAmount;
+
+  updateCustomBoxUI();
+}
+
+function decrementNut(nutName) {
+  const index = customBox.contents.findIndex(i => i.name === nutName);
+  if (index === -1) return;
+
+  const item = customBox.contents[index];
+  item.grams -= 25;
+  if (item.grams <= 0) {
+    customBox.contents.splice(index, 1);
+  }
+
+  updateCustomBoxUI();
+}
+
+function updateCustomBoxUI() {
+  const fill = document.getElementById("boxFill");
+  const summaryList = document.getElementById("boxSummaryList");
+
+  fill.innerHTML = '';
+  summaryList.innerHTML = '';
+
+  const totalGrams = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
+  const totalPrice = customBox.contents.reduce((sum, item) => sum + (item.grams * item.pricePer100g / 100), 0);
+
+  if (totalGrams === 0) {
+    document.getElementById("boxTotalWeight").textContent = 0;
+    document.getElementById("boxTotalPrice").textContent = '0.00';
+    return;
+  }
+
+  // Calculate height % relative to totalGrams to fill 100% box height proportionally
+  customBox.contents.forEach(item => {
+    // Add summary list item
+    const li = document.createElement("li");
+    li.style.display = "flex";
+    li.style.justifyContent = "space-between";
+    li.style.alignItems = "center";
+
+    const img = document.createElement("img");
+    img.src = item.image || "default.png";
+    img.alt = item.name;
+    img.style.width = "30px";
+    img.style.height = "30px";
+    img.style.objectFit = "contain";
+    img.style.marginRight = "8px";
+    img.style.borderRadius = "4px";
+
+    const textSpan = document.createElement("span");
+    textSpan.textContent = `${item.name}: ${item.grams}g`;
+    textSpan.style.flexGrow = "1";
+
+    const btnContainer = document.createElement("span");
+
+    const minusBtn = document.createElement("button");
+    minusBtn.textContent = "−";
+    minusBtn.style.marginRight = "8px";
+    minusBtn.style.cursor = "pointer";
+    minusBtn.style.width = "24px";
+    minusBtn.style.height = "24px";
+    minusBtn.style.borderRadius = "4px";
+    minusBtn.onclick = () => decrementNut(item.name);
+
+    const plusBtn = document.createElement("button");
+    plusBtn.textContent = "+";
+    plusBtn.style.cursor = "pointer";
+    plusBtn.style.width = "24px";
+    plusBtn.style.height = "24px";
+    plusBtn.style.borderRadius = "4px";
+    plusBtn.onclick = () => incrementNut(item.name);
+
+    btnContainer.appendChild(minusBtn);
+    btnContainer.appendChild(plusBtn);
+
+    li.appendChild(img);
+    li.appendChild(textSpan);
+    li.appendChild(btnContainer);
+
+    summaryList.appendChild(li);
+
+    // Visual box layer fill height relative to total grams (100% box height)
+    const heightPercent = (item.grams / totalGrams) * 100;
+    const div = document.createElement("div");
+    div.className = 'box-layer';
+    div.style.height = `${heightPercent}%`;
+    div.style.backgroundColor = item.color;
+    div.textContent = item.name;
+    div.style.color = "white";
+    div.style.fontSize = "12px";
+    div.style.textAlign = "center";
+    div.style.lineHeight = "1.2";
+    fill.appendChild(div);
+  });
+
+  document.getElementById("boxTotalWeight").textContent = totalGrams;
+  document.getElementById("boxTotalPrice").textContent = totalPrice.toFixed(2);
+}
+
 function addCustomBoxToCart() {
   if (!customBox.contents.length) return showAlert("Box is empty!");
 
   const name = "Custom Box: " + customBox.contents.map(i => `${i.name} ${i.grams}g`).join(", ");
   const price = customBox.contents.reduce((sum, item) => sum + (item.grams * item.pricePer100g / 100), 0);
-
-  const image = "custom-box.png"; // Placeholder
+  const image = "custom-box.png"; // Placeholder image for the custom box
   const qty = 1;
 
   cart.push({ name, price: parseFloat(price.toFixed(2)), image, qty });
@@ -1107,92 +1128,8 @@ function addCustomBoxToCart() {
   saveCart();
   showAlert("Box added to cart!");
 }
-let boxSize = 250; // default
-let currentBoxContent = {}; // e.g., { 'Cashew': 100, 'Almond': 150 }
 
-document.getElementById('boxSizeSelector').addEventListener('change', function () {
-  boxSize = parseInt(this.value);
-  adjustBoxSizeVisual(boxSize);
-  redistributeBoxContents(); // optional reset
-});
-function updateBoxVisual() {
-  const boxFill = document.getElementById('boxFill');
-  boxFill.innerHTML = ''; // Clear previous fills
-
-  const totalGrams = Object.values(currentBoxContent).reduce((a, b) => a + b, 0);
-
-  for (const nut in currentBoxContent) {
-    const fillDiv = document.createElement('div');
-    fillDiv.className = 'nut-fill';
-    fillDiv.style.height = (currentBoxContent[nut] / boxSize * 100) + '%';
-    fillDiv.style.backgroundImage = `url(${nutImagesMap[nut] || 'default.png'})`;
-    fillDiv.title = `${nut}: ${currentBoxContent[nut]}g`;
-    boxFill.appendChild(fillDiv);
-  }
-
-  updateBoxSummary();
-}
-const nutImagesMap = {
-  Cashew: 'cashew.webp',
-  Almond: 'almond.png',
-  Pistachio: 'pistachio.png',
-  Walnut: 'walnut.png',
-  Krikri1: 'Krikri1.png',
-  Krikri2: 'Krikri2.png',
-  Macadamia: 'macadamia.jpg',
-  Peanuts: 'peanut.webp'
-};
-
-function addToBox(nutName, pricePer100g) {
-  const totalGrams = Object.values(currentBoxContent).reduce((a, b) => a + b, 0);
-
-  if (!currentBoxContent[nutName]) {
-    currentBoxContent[nutName] = 0;
-  }
-
-  if (totalGrams === 0) {
-    currentBoxContent[nutName] = boxSize;
-  } else {
-    // Even split logic
-    const split = boxSize / (Object.keys(currentBoxContent).length + 1);
-    for (const nut in currentBoxContent) {
-      currentBoxContent[nut] = Math.floor(split);
-    }
-    currentBoxContent[nutName] = boxSize - Object.values(currentBoxContent).reduce((a, b) => a + b, 0);
-  }
-
-  updateBoxVisual();
-}
-function decrementNut(nutName) {
-  const nutIndex = customBox.contents.findIndex(item => item.name === nutName);
-  if (nutIndex === -1) return;
-
-  const item = customBox.contents[nutIndex];
-  if (item.grams <= 25) {
-    // Remove nut completely
-    customBox.contents.splice(nutIndex, 1);
-  } else {
-    item.grams -= 25;
-  }
-
-  updateCustomBoxUI();
-}
-function incrementNut(nutName) {
-  const total = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
-  if (total >= customBox.size) {
-    showAlert("Box is already full!");
-    return;
-  }
-
-  const item = customBox.contents.find(i => i.name === nutName);
-  if (!item) return; // Should not happen
-
-  const remaining = customBox.size - total;
-  const addAmount = Math.min(25, remaining);
-  item.grams += addAmount;
-
-  updateCustomBoxUI();
-}
+// =================== ALERTS ===================
 function showAlert(message) {
   const alertDiv = document.getElementById("customAlert");
   const msgP = document.getElementById("customAlertMessage");
@@ -1200,7 +1137,6 @@ function showAlert(message) {
   alertDiv.classList.add("visible");
   alertDiv.classList.remove("hidden");
 
-  // Auto-hide after 4 seconds
   clearTimeout(alertDiv._timeout);
   alertDiv._timeout = setTimeout(() => {
     hideAlert();
@@ -1213,6 +1149,15 @@ function hideAlert() {
   alertDiv.classList.add("hidden");
 }
 
+// =================== INIT ===================
+document.addEventListener("DOMContentLoaded", () => {
+  initCart();
+
+  // Example: Attach event listeners to box size buttons (if any)
+  document.querySelectorAll(".box-size-btn").forEach(btn => {
+    btn.addEventListener("click", () => selectBoxSize(parseInt(btn.dataset.size)));
+  });
+});
 </script>
 
 </body>
