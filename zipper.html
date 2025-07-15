@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kruxy - Zipper Bags</title>
+  <link rel="stylesheet" href="zipper.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+</head>
+<body>
+<div id="alertBar" class="alert-bar hidden">
+  <span class="alert-message">✅ You’ve successfully signed up!</span>
+  <button onclick="openLoginFromAlert()">Login Now</button>
+</div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="08.07.2025_13.00.57_REC-removebg-preview (1).png" alt="Kruxy Logo" />
+      </div>
+
+      <div class="menu-icon" onclick="toggleMenu()">
+        &#9776;
+      </div>
+    <nav class="navbar">
+        <ul id="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#about">About Kruxy</a></li>
+          <li><a href="cans.html">Cans</a></li>
+          <li><a href="spreads.html">Spreads & Chocolate</a></li>
+          <li><a href="mix.html">Make your Own Mix</a></li>
+          <li><a href="All_items.html">All Items</a></li>
+          <li><a href="#contact">Contact</a></li>
+          
+        </ul>
+      </nav>
+      <div class="login-icon" onclick="toggleLoginModal()">
+  <i class="fas fa-user"></i>
+</div>
+
+    </div>
+
+  </header>
+
+  <!-- Main content -->
+<main>
+  <section class="hero">
+    <h1>Kruxy Zipper Bag Collection</h1>
+    <p>Freshly packed nuts in resealable bags for flavor that lasts</p>
+  </section>
+</main>
+
+
+  <!-- Search and Products -->
+<div class="search-sort-wrapper">
+  <div class="search-sort-group">
+    <input type="text" id="searchInput" placeholder="Search products..." />
+  <select id="sortSelect">
+  <option value="" disabled hidden selected>Sort by</option>
+  <option value="default">Default</option>
+  <option value="low-high">Price: Low to High</option>
+  <option value="high-low">Price: High to Low</option>
+  <option value="weight-low-high">Weight: Small to Big</option>
+  <option value="weight-high-low">Weight: Big to Small</option>
+  <option value="top-rated">Top Rated</option>
+  <option value="on-sale">On Sale</option>
+</select>
+
+
+  </div>
+</div>
+
+
+
+
+  <div class="product-grid" id="productGrid">
+    <!-- Sample Product -->
+<div class="product-card on-sale" data-name="Cashew Krikri Cheese">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="KashewKrikri_pic (2).png" alt="Cashew Krikri Cheese" />
+      </div>
+      <div class="product-info">
+        <div class="sale-badge">On Sale!</div>
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Cashew Krikri Cheese</div>
+        <div class="price-wrapper">
+  <p class="price on-sale-price">
+  Price:
+  <span class="old-price">$1</span>
+  <span class="price-value" data-usd="0.80">$0.80</span>
+</p>
+
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 20</p>
+        <p class="pieces">Weight: 70g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+     
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>30g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>170</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>11g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>0.98g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>5mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>9g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>&lt;1 g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>2g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>61mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>1.56mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>144mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>8g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>كاجو, لوز , جوز , زبيب اسود , بندق , كرانبري, قلب دوار الشمس , قلب يقطين. نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+          Cashews, almonds, walnuts, black raisins, hazelnuts, cranberries, sunflower kernels, pumpkin kernels. Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+        </p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="product-card on-sale" data-name="Energy Mix">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="EnergyMix_70g_pic.png" alt="Energy Mix" />
+      </div>
+      <div class="product-info">
+        <div class="sale-badge">On Sale!</div>
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Energy Mix</div>
+        <div class="price-wrapper">
+  <p class="price on-sale-price">
+  Price:
+  <span class="old-price">$1</span>
+  <span class="price-value" data-usd="0.80">$0.80</span>
+</p>
+
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 20</p>
+        <p class="pieces">Weight: 70g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+   
+
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>30g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>170</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>11g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>0.98g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>5mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>9g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>&lt;1 g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>2g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>61mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>1.56mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>144mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>8g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>كاجو, لوز , جوز , زبيب اسود , بندق , كرانبري, قلب دوار الشمس , قلب يقطين. نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+          Cashews, almonds, walnuts, black raisins, hazelnuts, cranberries, sunflower kernels, pumpkin kernels. Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+        </p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card on-sale" data-name="Smoked Almonds">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="SmokedAlmond_pic.png" alt="Smoked Almonds" />
+      </div>
+      <div class="product-info">
+        <div class="sale-badge">On Sale!</div>
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Smoked Almonds</div>
+       <div class="price-wrapper">
+  <p class="price on-sale-price">
+  Price:
+  <span class="old-price">$1.40</span>
+  <span class="price-value" data-usd="0.95">$0.95</span>
+</p>
+
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 20</p>
+        <p class="pieces">Weight: 70g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+     
+
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>30g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>190</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>14g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>1.39g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>360mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>1g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>0g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>&lt;1 g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>71mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>1.05mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>94mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>14g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>اللوز, نكهة الباربكيو الطبيعية, الجلوجوز, معزز النكهة (E621), مالتوديكسترين, ملح , نشاء الذرة, منظم الحموضة( E340).  نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+          Almonds, natural BBQ flavour, glucose, flavor enhancer (E621), maltodextrin, salt, cornstarch, acidity regulator (E340). Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+        </p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+ <div class="product-card" data-name="Pistachio">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="pistachio_60g_pic.png" alt="Pistachio" />
+      </div>
+      <div class="product-info">
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Pistachio</div>
+        <div class="price-wrapper">
+  <p class="price">Price: <span class="price-value" data-usd="0.95">$0.95</span></p>
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 20</p>
+        <p class="pieces">Weight: 60g</p> 
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>30g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>170</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>12g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>0.89g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0g</span></div>
+        <div class="nf-row"><span>Sodium</span><span>45mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>10g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>1g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>0g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>66mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>1.35mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>228mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>7g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>فستق حلبي, ملح.  نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+          Pistachios, salt.  Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+        </p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card" data-name="Egyption Seeds">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="egyptian_seeds_pic.png" alt="Egyption Seeds" />
+      </div>
+      <div class="product-info">
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Egyption Seeds</div>
+        <div class="price-wrapper">
+  <p class="price">Price: <span class="price-value" data-usd="1.20">$1.20</span></p>
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 10</p>
+        <p class="pieces">Weight: 170g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+     
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>100g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>550</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>40g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>1.69g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>2090mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>23g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>1g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>0g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>152mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>2.8mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>452mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>27g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>بزر بطيخ , نشا الذرة, معدل الحموضة (E330), ملح. نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+          Watermelon seeds, Corn Starch, Acidity Modifier (E330), Salt. Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+</p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="product-card" data-name="Pumpkin Seeds">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="pumpkin_seeds_pic.png" alt="Pumpkin Seeds" />
+      </div>
+      <div class="product-info">
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Pumpkin Seeds</div>
+        <div class="price-wrapper">
+  <p class="price">Price: <span class="price-value" data-usd="1.20">$1.20</span></p>
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 10</p>
+        <p class="pieces">Weight: 150g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+     
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>100g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>540</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>42g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>1.01g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>770mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>0g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>0g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>0g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>205mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>13.9mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>430mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>42g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>بزر يقطين, ملح.  نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+         Pumpkin seed, salt.  Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+</p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="product-card on-sale" data-name="Sunflower Seeds">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="Sunflower_seeds_pic.png" alt="Sunflower Seeds" />
+      </div>
+      <div class="product-info">
+        <div class="sale-badge">On Sale!</div>
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Sunflower Seeds</div>
+       <div class="price-wrapper">
+  <p class="price on-sale-price">
+  Price:
+  <span class="old-price">$1.10</span>
+  <span class="price-value" data-usd="0.90">$0.90</span>
+</p>
+
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 10</p>
+        <p class="pieces">Weight: 150g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>100g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>510</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>35g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>1g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>3620mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>21g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>1g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>0g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>174mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>2.7mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>699mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>29g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>بزر دوار الشمس , معدل الحموضة (E330), نشا الذرة, ملح. نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+        SunFlower seeds, Corn Starch, Acidity Modifier (E330), Salt. Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="product-card" data-name="Energy Mix">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="EnergyMix_250g_pic.png" alt="Energy Mix" />
+      </div>
+      <div class="product-info">
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Energy Mix</div>
+       <div class="price-wrapper">
+  <p class="price">Price: <span class="price-value" data-usd="3">$3</span></p>
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 10</p>
+        <p class="pieces">Weight: 250g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>100g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>560</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>37g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>1.33g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>15mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>30g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>1g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>8g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>202mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>5.2mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>481mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>27g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>كاجو, لوز , جوز , زبيب اسود , بندق , كرانبري, قلب دوار الشمس , قلب يقطين. نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+          Cashews, almonds, walnuts, black raisins, hazelnuts, cranberries, sunflower kernels, pumpkin kernels. Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+
+</p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="product-card on-sale" data-name="Kernels Mix">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="Kernels_mix_pic.png" alt="Kernels Mix" />
+      </div>
+      <div class="product-info">
+        <div class="sale-badge">On Sale!</div>
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Kernels Mix</div>
+        <div class="price-wrapper">
+  <p class="price on-sale-price">
+  Price:
+  <span class="old-price">$5.50</span>
+  <span class="price-value" data-usd="5">$5</span>
+</p>
+
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 10</p>
+        <p class="pieces">Weight: 250g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>100g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>595</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>42g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>6.5g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0.2g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>300g</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>34g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>4g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>3g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>140mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>4mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>40mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>20g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>كاجو , فستق حلبي, لوز, بندق, كاجو مغلف, لوز مغلف, (دقيق القمح, السكر, نشاء الذرة) نشاء معدل (E1422) , نكهة الباربيكيو الطبيعية ( معزز النكهة E621) , مالتوديكسترين, بروتين الصويا المهدرج), معدل الحموضة (E330), زيت نباتي غير مهدرج (زيت نخيل, زيت دوار الشمس), ملح.   نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+          <br><br>
+         Cashews, pistachios, almonds, hazelnuts, coated cashews, coated almonds, (wheat flour, sugar, cornstarch) modified starch (E1422), natural BBQ flavor (E621), maltodextrin, hydrolyzed soy protein),  Acidity Modifier (E330), non-hydrogenated vegetable oil (palm oil, sunflower oil), salt.  Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+
+</p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="product-card" data-name="Pistachio">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="pistachio_250g_pic.png" alt="Pistachio" />
+      </div>
+      <div class="product-info">
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Pistachio</div>
+       <div class="price-wrapper">
+  <p class="price">Price: <span class="price-value" data-usd="5">$5</span></p>
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 10</p>
+        <p class="pieces">Weight: 250g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+     
+
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>100g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>570</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>39g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>1g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>140mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>34g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>1g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>1g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>221mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>4.5mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>760mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>22g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>فستق حلبي, ملح.  نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+         Pistachios, salt.  Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+
+</p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="product-card" data-name="Regular Mix">
+  <div class="card-inner">
+    <!-- FRONT -->
+    <div class="card-face card-front">
+      <div class="product-image">
+        <img src="RegularMix_pic.png" alt="Regular Mix" />
+      </div>
+      <div class="product-info">
+        <p class="flip-trigger">Click to view Nutrition Facts</p>
+        <div class="product-title">Regular Mix</div>
+        <div class="price-wrapper">
+  <p class="price">Price: <span class="price-value" data-usd="1.7">$1.7</span></p>
+  <select class="currency-selector">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+</div>
+        <p class="pieces">Pieces Per Container: 10</p>
+        <p class="pieces">Weight: 250g</p>
+        <input type="number" min="1" value="1" class="quantity-input" />
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+     
+
+    </div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <!-- Close (X) Button -->
+      <div class="close-x flip-back" title="Close">✕</div>
+
+      <div class="nutrition-layout">
+        <h4>Nutrition Facts</h4>
+        <div class="nf-row"><span>Serving Size:</span><span>100g </span></div>
+        <hr />
+        <div class="nf-row bold"><span>Amount Per Serving</span></div>
+        <div class="nf-row"><span>Calories</span><span>550</span></div>
+        <hr />
+        <div class="nf-row"><span>Total Fat</span><span>36g</span></div>
+    <div class="nf-row sub"><span>Saturated Fat</span><span>12g</span></div>
+        <div class="nf-row sub"><span>Trans Fat</span><span>0.1g</span></div>
+        <div class="nf-row"><span>Cholesterol</span><span>0mg</span></div>
+        <div class="nf-row"><span>Sodium</span><span>800mg</span></div>
+        <div class="nf-row"><span>Total Carbohydrate</span><span>32g</span></div>
+        <div class="nf-row sub"><span>Dietary Fiber</span><span>5g</span></div>
+        <div class="nf-row sub"><span>Total Sugars</span><span>4g</span></div>
+        <div class="nf-row"><span>Calcium</span><span>60mg</span></div>
+        <div class="nf-row"><span>Iron</span><span>3mg</span></div>
+        <div class="nf-row"><span>Potassium</span><span>50mg</span></div>
+        <div class="nf-row"><span>Vitamin D</span><span>0mcg</span></div>
+        <div class="nf-row"><span>Protein</span><span>23g</span></div>
+      </div>
+
+      <div class="ingredients">
+        <h4>Ingredients:</h4>
+        <p>فول سوداني اشقر, الفول السوداني المغلف ( دقيق القمح والسكر ونشاء الذرة ) وبذور اليقطين والذرة والقضامة والنشاء المعدلة , (E1422) نكهة الباربكيو الطبيعية (الجلوكوز, محسن النكهة), (E621)  , مالتوديكسترين, بروتين الصويا المتحللة), معدل الحموضة (E330), زيت نباتي غير مهدرج ,زيت النخيل, زيت دوار الشمس, الملح. نصائح الحساسية : قراءة  المكونات بالخط العريض, قد يحتوي على اثار الحبوب (الغلوتين) والمكسرات وفول الصويا ومشتقات الحليب.
+
+          <br><br>
+         Peanuts, coated peanuts ( wheat flour, sugar and cornstarch), pumpkin seeds, corn, and chickpeas and modified starch, (E1422) Natural BBQ flavor (glucose, flavor enhancer) (E621) Maltodextrin, Hydolyzed Soy Protein, (E330) Non-hydrogenated Vegatablde Oil, Palm Oil, Sunflower Oil, Salt. Allergy Advice: For allergen see ingredients in bold, may contain traces of cereals ( gluten), nuts, soybeans, milk derivatives.
+</p>
+      </div>
+
+      <!-- Go Back Button -->
+      <button class="flip-back">Go Back</button>
+    </div>
+  </div>
+</div>
+    <!-- Add more products below in the same format -->
+  </div>
+</section>
+
+<!-- Cart Panel -->
+<div class="cart-panel hidden" id="cartPanel">
+  <span class="cart-close-btn" onclick="closeCart()">×</span>
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+  <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+  <div class="cart-currency-converter">
+  <label for="cartCurrency">Convert Total To:</label>
+  <select id="cartCurrency">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+  <div id="convertedTotal"></div>
+</div>
+
+  <button class="share-cart-btn" onclick="shareCart()">Share Your Cart on WhatsApp</button>
+  <button class="checkout-btn" onclick="togglePaymentOptions()">Proceed to Checkout</button>
+
+<div id="paymentOptions" class="payment-options hidden">
+  <a href="https://www.visa.com/" target="_blank" title="Pay with Visa">
+    <i class="fab fa-cc-visa"></i>
+  </a>
+  <a href="https://www.wish.com/payment" target="_blank" title="Pay with Wish Money">
+    <i class="fas fa-gift"></i>
+  </a>
+  <a href="https://www.paypal.com/checkoutnow" target="_blank" title="Pay with PayPal">
+    <i class="fab fa-cc-paypal"></i>
+  </a>
+
+
+  <a href="#" onclick="handleCashOnDelivery()" title="Cash on Delivery">
+    <i class="fas fa-truck"></i>
+  </a>
+</div>
+
+
+</div>
+
+
+<!-- Cart Icon -->
+<div class="cart-icon" onclick="toggleCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cartCount">0</span>
+</div>
+
+ 
+
+  <!-- Nut rain -->
+  <div class="nut-rain" id="nutRainContainer"></div>
+
+  <!--footer-->
+<footer class="footer">
+  <div class="footer-grid">
+    <!-- Column 1: Branding + Social -->
+    <div class="footer-column brand-social">
+      <p class="trademark">© 2025 Kruxy. All rights reserved.</p>
+      <div class="social-icons" id="contact">
+        <a href="https://wa.me/9613615661" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/Kruxylb" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/kruxy" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/Kruxylb" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+
+    <!-- Column 2: Links -->
+    <div class="footer-column quick-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="become_our_partner.html">Become Our Partner</a></li>
+        <li><a href="shipping.html">Shipping Info</a></li>
+
+      </ul>
+    </div>
+
+    
+
+    <!-- Column 3: Subscribe -->
+    <div class="footer-column subscribe">
+      <p class="discount-text">🎁 Get 10% Off Your First Order!</p>
+      <form class="discount-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+<div id="emailSuccess" class="email-success hidden">
+  <div class="success-box">
+    <p>Thanks! We're processing your subscription...</p>
+    <div class="loading-bar">
+      <div class="loading-fill"></div>
+    </div>
+  </div>
+</div>
+<!--Whatsapp Icon-->
+<a href="https://wa.me/9613615661" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!--Catalogues-->
+<div class="catalogue-float" onclick="toggleCatalogue()">
+  <i class="fas fa-book"></i>
+  <span>Catalogue</span>
+</div>
+
+<div class="catalogue-options" id="catalogueOptions">
+  <a href="Cataloge_spread_and_chocolate_bar_kruxy_.pdf" target="_blank">Spreads & Chocolate</a>
+  <a href="Catalogue_Nuts_kruxy_.pdf" target="_blank">Nuts</a>
+</div>
+
+
+
+
+<div class="catalogue-options" id="catalogueOptions">
+  <a href="Cataloge spread and chocolate bar kruxy_.pdf" target="_blank">Spreads & Chocolate</a>
+  <a href="Catalogue  Nuts kruxy_.pdf" target="_blank">Nuts</a>
+</div>
+
+<div id="loginModal" class="login-modal hidden">
+  <div class="login-box">
+    <span class="close-login" onclick="toggleLoginModal()">×</span>
+   <h2>Become a Member</h2>
+      <p style="text-align:center; font-size:14px; margin-bottom:10px;">
+        Get exclusive access, deals & discounts!
+      </p>
+    <form>
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<div id="loginFormModal" class="login-modal hidden">
+  <div class="login-box">
+    <span class="close-login" onclick="toggleLoginForm()">×</span>
+    <h2>Login</h2>
+    <form>
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- ✅ Login Success Alert -->
+<div id="loginSuccessAlert" class="alert-success hidden">
+  <p>✅ Login successful!</p>
+  <div class="login-loading-bar">
+    <div class="login-loading-fill"></div>
+  </div>
+</div>
+
+  <!-- Script -->
+  <script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kruxy - Become our partner</title>
+  <link rel="stylesheet" href="zipper.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+</head>
+<style>
+  .partner-hero {
+  text-align: center;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  padding: 100px 20px 60px;
+  color: #5e3b1c;
+}
+
+.partner-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.partner-hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #5e3b1c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.hero-btn:hover {
+  background-color: #3e270f;
+}
+
+/* === Why Partner Section === */
+.why-partner {
+  padding: 60px 20px;
+  background: #fffaf5;
+  text-align: center;
+}
+
+.why-partner h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #5e3b1c;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 0 10px;
+}
+
+.benefit {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.benefit:hover {
+  transform: translateY(-8px);
+}
+
+.benefit i {
+  font-size: 32px;
+  color: #c29363;
+  margin-bottom: 15px;
+}
+
+.benefit h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #5e3b1c;
+}
+
+.benefit p {
+  font-size: 0.95rem;
+}
+
+/* === Partner Types === */
+.partner-types {
+  padding: 60px 20px;
+  background-color: #f9f7f4;
+  text-align: center;
+}
+
+.partner-types h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #5e3b1c;
+}
+
+.partner-types ul {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: auto;
+}
+
+.partner-types li {
+  margin: 15px 0;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.partner-types i {
+  margin-right: 10px;
+  color: #c29363;
+}
+
+/* === Partner Form === */
+.partner-form-section {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.partner-form-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #5e3b1c;
+}
+
+.partner-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 15px;
+}
+
+.partner-form input,
+.partner-form textarea {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.partner-form button {
+  padding: 12px;
+  background-color: #5e3b1c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.partner-form button:hover {
+  background-color: #3e270f;
+}
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+</style>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="08.07.2025_13.00.57_REC-removebg-preview (1).png" alt="Kruxy Logo" />
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      <nav class="navbar">
+        <ul id="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#about">About Kruxy</a></li>
+          <li><a href="mix.html">Make your Own Mix</a></li>
+          <li><a href="spreads.html">Spreads & Chocolate</a></li>
+          <li><a href="zipper.html">Zipper bags</a></li>
+          <li><a href="All_items.html">All Items</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="login-icon" onclick="toggleLoginModal()">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+ <!-- Hero Section -->
+  <section class="partner-hero">
+    <h1>Become a Kruxy Partner</h1>
+    <p>Let's grow together! Distribute, collaborate, or retail Kruxy nuts and spreads.</p>
+    <a href="#partner-form" class="hero-btn">Join Now</a>
+  </section>
+
+  <!-- Why Partner With Us -->
+  <section class="why-partner">
+    <h2>Why Partner with Kruxy?</h2>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <i class="fas fa-seedling"></i>
+        <h3>Premium Quality</h3>
+        <p>We offer high-quality, freshly roasted nuts and innovative spreads your customers will love.</p>
+      </div>
+      <div class="benefit">
+        <i class="fas fa-handshake"></i>
+        <h3>Trusted Collaboration</h3>
+        <p>We believe in win-win partnerships with full transparency and consistent support.</p>
+      </div>
+      <div class="benefit">
+        <i class="fas fa-box"></i>
+        <h3>Custom Packaging</h3>
+        <p>White-labeling and flexible packaging options to suit your market needs.</p>
+      </div>
+      <div class="benefit">
+        <i class="fas fa-globe"></i>
+        <h3>Global Shipping</h3>
+        <p>Fast worldwide delivery with export documentation and logistic assistance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Types -->
+  <section class="partner-types">
+    <h2>Who Can Partner With Us?</h2>
+    <ul>
+      <li><i class="fas fa-store"></i> Retailers and Specialty Stores</li>
+      <li><i class="fas fa-truck"></i> Distributors & Wholesalers</li>
+      <li><i class="fas fa-utensils"></i> Restaurants & Cafes</li>
+      <li><i class="fas fa-people-arrows"></i> Brand Collaborators</li>
+    </ul>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="partner-form" class="partner-form-section">
+    <h2>Apply Now</h2>
+    <form class="partner-form">
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="text" placeholder="Company Name" required />
+      <input type="text" placeholder="Your Country" required />
+      <textarea placeholder="Tell us more about your business or inquiry..." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <!-- Column 1: Branding + Social -->
+      <div class="footer-column brand-social">
+        <p class="trademark">© 2025 Kruxy. All rights reserved.</p>
+        <div class="social-icons" id="contact">
+          <a href="https://wa.me/9613615661" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/Kruxylb" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/kruxy" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.facebook.com/Kruxylb" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2: Links -->
+      <div class="footer-column quick-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="become_our_partner.html">Become Our Partner</a></li>
+          <li><a href="shipping.html">Shipping Info</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Subscribe -->
+      <div class="footer-column subscribe">
+        <p class="discount-text">🎁 Get 10% Off Your First Order!</p>
+        <form class="discount-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="home.js"></script>
+</body>
+</html>

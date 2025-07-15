@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kruxy - Make Your Own Mix</title>
+  <link rel="stylesheet" href="zipper.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+</head>
+<style>
+  /* Hero Section */
+.careers-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  color: #5e3b1c;
+}
+
+.careers-hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.careers-hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Job Positions Grid */
+.positions-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  background-color: #fdf9f3;
+}
+
+/* Individual Card */
+.job-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.job-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Button */
+.send-cv-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #5e3b1c;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.send-cv-btn:hover {
+  background-color: #3e270f;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.job-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.job-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.job-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+</style>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="08.07.2025_13.00.57_REC-removebg-preview (1).png" alt="Kruxy Logo" />
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      <nav class="navbar">
+        <ul id="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#about">About Kruxy</a></li>
+          <li><a href="mix.html">Make your Own Mix</a></li>
+          <li><a href="spreads.html">Spreads & Chocolate</a></li>
+          <li><a href="zipper.html">Zipper bags</a></li>
+          <li><a href="All_items.html">All Items</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="login-icon" onclick="toggleLoginModal()">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+<section class="careers-hero">
+  <h1>Welcome to Kruxy Careers</h1>
+  <p>Join our passionate team and help us spread the crunch, one nut at a time.</p>
+</section>
+
+<!-- Job Positions -->
+<section class="positions-container">
+  <div class="job-card">
+    <h3>Marketing Executive</h3>
+    <a href="mailto:sales.exp@kruxylb.com?subject=CV for Marketing Executive" class="send-cv-btn">Send CV</a>
+  </div>
+
+  <div class="job-card">
+    <h3>Project Manager</h3>
+    <a href="mailto:sales.exp@kruxylb.com?subject=CV for Graphic Designer" class="send-cv-btn">Send CV</a>
+  </div>
+
+  <div class="job-card">
+    <h3>HR</h3>
+    <a href="mailto:sales.exp@kruxylb.com?subject=CV for Sales Representative" class="send-cv-btn">Send CV</a>
+  </div>
+
+  <div class="job-card">
+    <h3>Marketing Executive</h3>
+    <a href="mailto:sales.exp@kruxylb.com?subject=CV for Marketing Executive" class="send-cv-btn">Send CV</a>
+  </div>
+
+  <div class="job-card">
+    <h3>Web Developper</h3>
+    <a href="mailto:sales.exp@kruxylb.com?subject=CV for Graphic Designer" class="send-cv-btn">Send CV</a>
+  </div>
+
+  <div class="job-card">
+    <h3>Sales Representative</h3>
+    <a href="mailto:sales.exp@kruxylb.com?subject=CV for Sales Representative" class="send-cv-btn">Send CV</a>
+  </div>
+
+    <div class="job-card">
+    <h3>Graphic Designer</h3>
+    <a href="mailto:sales.exp@kruxylb.com?subject=CV for Graphic Designer" class="send-cv-btn">Send CV</a>
+  </div>
+
+  <div class="job-card">
+    <h3>IT</h3>
+    <a href="mailto:sales.exp@kruxylb.com?subject=CV for Sales Representative" class="send-cv-btn">Send CV</a>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <!-- Column 1: Branding + Social -->
+      <div class="footer-column brand-social">
+        <p class="trademark">© 2025 Kruxy. All rights reserved.</p>
+        <div class="social-icons" id="contact">
+          <a href="https://wa.me/9613615661" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/Kruxylb" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/kruxy" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.facebook.com/Kruxylb" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2: Links -->
+      <div class="footer-column quick-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="become_our_partner.html">Become Our Partner</a></li>
+          <li><a href="shipping.html">Shipping Info</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Subscribe -->
+      <div class="footer-column subscribe">
+        <p class="discount-text">🎁 Get 10% Off Your First Order!</p>
+        <form class="discount-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="home.js"></script>
+</body>
+</html>

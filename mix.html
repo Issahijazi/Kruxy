@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kruxy - Make Your Own Mix</title>
+  <link rel="stylesheet" href="mix.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<style>
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+}
+
+/* HEADER */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.logo {
+  margin: 0;
+  padding: 0;
+}
+
+.logo img {
+  max-height: 120px;
+  height: auto;
+  width: auto;
+  display: block;
+}
+
+/* NAVIGATION */
+.navbar {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.navbar a:hover {
+  color: #8b5e3c;
+  box-shadow: 0 4px 8px rgba(139, 94, 60, 0.2);
+  background-color: #fdf7f2;
+  cursor: pointer;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #333;
+}
+
+.login-icon {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(45deg, #ffe0b2, #ffcc80);
+  color: #4e342e;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* Cart */
+.cart-icon {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  background: #ff9800;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+}
+.cart-icon span {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.cart-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  border-left: 2px solid #ccc;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 2000; /* ✅ Now appears above header */
+
+}
+
+.cart-panel.active {
+  transform: translateX(0);
+}
+
+.cart-close-btn {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.cart-total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.share-cart-btn {
+  margin-top: 15px;
+  background: #4caf50;
+  color: white;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* WhatsApp Floating */
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #25d366;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 22px;
+  z-index: 999;
+}
+
+/* Footer */
+.footer {
+  background-color: #6c6967;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+.footer-column {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+.footer-links {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.footer-links a {
+  color: #f4f4f4;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.trademark {
+  color: #5e3b1c;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.brand-social .trademark {
+  color: #e2d7cf;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.discount-text {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #f4f4f4;
+}
+
+.discount-form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.discount-form input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  min-width: 230px;
+  height: 38px;
+}
+
+.discount-form button {
+  padding: 8px 14px;
+  background-color: #5e3b1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  height: 38px;
+}
+
+.discount-form button:hover {
+  background-color: #472b12;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  font-size: 20px;
+  margin: 0 8px;
+  transition: transform 0.2s ease;
+}
+
+
+.social-icons a:nth-child(1) { color: #25D366; }
+.social-icons a:nth-child(2) { color: #E1306C; }
+.social-icons a:nth-child(3) { color: #0077B5; }
+.social-icons a:nth-child(4) { color: #1877F2; }
+
+.social-icons a:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
+}
+.quick-links h4 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #fff5ee;
+}
+
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-links li {
+  margin-bottom: 10px;
+}
+
+.quick-links a {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.quick-links a:hover {
+  color: #f4c28f;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    display: none;
+    background: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+  .navbar.active ul {
+    display: flex;
+  }
+  .menu-icon {
+    display: block;
+  }
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.cart-item-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.cart-item-info {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.remove-item {
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.checkout-btn {
+  margin-top: 10px;
+  background: #5e3b1c;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.box-selector {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff9f4;
+}
+
+.box-selector h2 {
+  font-size: 28px;
+  color: #5e3b1c;
+  margin-bottom: 20px;
+}
+
+.size-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.size-options button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #e6c8a1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.size-options button:hover {
+  background-color: #d4a46c;
+}
+.custom-box-area {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-and-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.glass-box {
+  width: 250px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #cfa066;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-image: linear-gradient(to top, #fdf6ef, #fffdfa);
+}
+
+.box-label {
+  position: absolute;
+  top: 10px;
+  font-size: 24px;
+  color: #5e3b1c;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+}
+
+.box-fill {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.box-layer {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.box-summary {
+  min-width: 260px;
+  background: #f9f6f3;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.box-summary h3 {
+  margin-top: 0;
+  color: #5e3b1c;
+}
+
+#boxSummaryList {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+#boxSummaryList li {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.add-box-to-cart {
+  background-color: #5e3b1c;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.add-box-to-cart:hover {
+  background-color: #472b12;
+}
+
+.nut-products-section {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.nut-products-section h2 {
+  color: #5e3b1c;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.nut-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+
+.nut-card {
+  background-color: #fffdfa;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 16px;
+  width: 180px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.nut-card:hover {
+  transform: translateY(-4px);
+}
+
+.nut-card img {
+  max-width: 100%;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.nut-card h4 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.nut-card .price {
+  font-size: 14px;
+  color: #5e3b1c;
+  margin: 8px 0;
+}
+
+.nut-card button {
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: #5e3b1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nut-card button:hover {
+  background-color: #3e2a13;
+}
+.custom-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.custom-alert.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.custom-alert-box {
+  background: white;
+  padding: 24px 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  max-width: 320px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  color: #5e3b1c;
+  transform: scale(0.9);
+  animation: scaleIn 0.3s forwards;
+}
+
+.custom-alert-box button {
+  margin-top: 16px;
+  background-color: #5e3b1c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.custom-alert-box button:hover {
+  background-color: #472b12;
+}
+
+@keyframes scaleIn {
+  to { transform: scale(1); }
+}
+
+
+</style>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="logo">
+      <a href="index.html"><img src="logo.png" alt="Kruxy Logo" /></a>
+    </div>
+
+    <nav class="navbar">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="cans.html">Cans</a></li>
+        <li><a href="zipper.html">Zipper</a></li>
+        <li><a href="all_items.html">All Items</a></li>
+        <li><a href="spreads.html">Spread & Chocolates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="login-icon">
+      <i class="fa fa-user"></i>
+    </div>
+  </div>
+</header>
+
+
+<!-- HERO -->
+<main>
+  <section class="hero">
+    <h1>Make Your Own Mix</h1>
+    <p>Choose your favorites, blend your cravings, and build your perfect snack!</p>
+  </section>
+</main>
+
+<section class="box-selector">
+  <h2>Select Your Box Size</h2>
+  <div class="size-options">
+    <button onclick="selectBoxSize(250)">250g</button>
+    <button onclick="selectBoxSize(500)">500g</button>
+    <button onclick="selectBoxSize(750)">750g</button>
+    <button onclick="selectBoxSize(1000)">1000g</button>
+  </div>
+</section>
+
+<section class="custom-box-area">
+  <div class="box-and-summary">
+    <div class="glass-box" id="glassBox">
+      <div class="box-label">Kruxy</div>
+      <div class="box-fill" id="boxFill"></div>
+    </div>
+
+    <div class="box-summary">
+      <h3>Box Summary</h3>
+      <ul id="boxSummaryList"></ul>
+      <p>Total: <span id="boxTotalWeight">0</span>g / <span id="boxMaxWeight">0</span>g</p>
+      <p>Price: $<span id="boxTotalPrice">0.00</span></p>
+      <button onclick="addCustomBoxToCart()" class="add-box-to-cart">Add Box to Cart</button>
+    </div>
+  </div>
+</section>
+
+<section class="nut-products-section">
+  <h2>Choose Your Nuts</h2>
+  <div class="nut-products-grid">
+    <!-- Sample Product -->
+    <div class="nut-card">
+      <img src="cashew.webp" alt="Cashew" />
+      <h4>Cashew</h4>
+      <p class="price">Price: $2.00 / 100g</p>
+      <button onclick="addToCustomBox({name: 'Cashew', color: '#f5deb3', pricePer100g: 2.00, image: 'cashew.webp'})">Add to Box</button>
+    </div>
+
+    <div class="nut-card">
+      <img src="almond.png" alt="Almond" />
+      <h4>Almond</h4>
+      <p class="price">Price: $1.80 / 100g</p>
+<button onclick="addToCustomBox({name: 'Almonds', color: '#f5deb3', pricePer100g: 2.00, image: 'almond.png'})">Add to Box</button>
+
+    </div>
+
+    <div class="nut-card">
+      <img src="pistachio.png" alt="Pistachio" />
+      <h4>Pistachio</h4>
+      <p class="price">Price: $2.50 / 100g</p>
+      <button onclick="addToCustomBox({name: 'Pistachio', color: '#a4c686', pricePer100g: 2.50,image: 'pistachio.png'})">Add to Box</button>
+    </div>
+
+    <div class="nut-card">
+      <img src="bendo2.png" alt="Hazelnut" />
+      <h4>Hazelnut</h4>
+      <p class="price">Price: $2.20 / 100g</p>
+      <button onclick="addToCustomBox({name: 'Hazelnut', color: '#d2b48c', pricePer100g: 2.20 ,image: 'bendo2.png'})">Add to Box</button>
+    </div>
+
+    <div class="nut-card">
+  <img src="krikri1.png" alt="Krikri Classic" />
+  <h4>Krikri Classic</h4>
+  <p class="price">Price: $1.90 / 100g</p>
+  <button onclick="addToCustomBox({name: 'Krikri Classic', color: '#d9c7a1', pricePer100g: 1.90, image: 'krikri1.png'})">Add to Box</button>
+</div>
+
+<div class="nut-card">
+  <img src="krikri2.png" alt="Krikri Spicy" />
+  <h4>Krikri Spicy</h4>
+  <p class="price">Price: $2.20 / 100g</p>
+  <button onclick="addToCustomBox({name: 'Krikri Spicy', color: '#c98c4b', pricePer100g: 2.20, image: 'krikri2.png'})">Add to Box</button>
+</div>
+
+    <!-- You can add more nut cards here... -->
+  </div>
+</section>
+
+
+
+<!-- CART ICON -->
+<div class="cart-icon" onclick="toggleCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cartCount">0</span>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel hidden" id="cartPanel">
+  <span class="cart-close-btn" onclick="toggleCart()">×</span>
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+  <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+  <button class="share-cart-btn" onclick="shareCart()">Share Your Cart on WhatsApp</button>
+</div>
+
+<!-- WHATSAPP ICON -->
+<a href="https://wa.me/9613615661" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <!-- Column 1: Branding + Social -->
+    <div class="footer-column brand-social">
+      <p class="trademark">© 2025 Kruxy. All rights reserved.</p>
+      <div class="social-icons" id="contact">
+        <a href="https://wa.me/9613615661" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/Kruxylb" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/kruxy" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/Kruxylb" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+
+    <!-- Column 2: Links -->
+    <div class="footer-column quick-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="become_our_partner.html">Become Our Partner</a></li>
+        <li><a href="shipping.html">Shipping Info</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Subscribe -->
+    <div class="footer-column subscribe">
+      <p class="discount-text">🎁 Get 10% Off Your First Order!</p>
+      <form class="discount-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+<!-- Custom Alert Modal -->
+<div id="customAlert" class="custom-alert hidden">
+  <div class="custom-alert-box">
+    <p id="customAlertMessage"></p>
+    <button onclick="hideAlert()" aria-label="Close alert">OK</button>
+  </div>
+</div>
+
+
+<!-- JS -->
+<script src="mix.js"></script>
+<script>
+function toggleMenu() {
+  document.querySelector(".navbar").classList.toggle("active");
+}
+
+function toggleCart() {
+  document.getElementById("cartPanel").classList.toggle("active");
+}
+
+function toggleLoginModal() {
+  alert("Login functionality coming soon.");
+}
+
+let cart = [];
+
+function updateCartDisplay() {
+  const container = document.getElementById("cartItems");
+  const count = document.getElementById("cartCount");
+  const totalEl = document.getElementById("cartTotal");
+
+  container.innerHTML = '';
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+
+    div.innerHTML = `
+      <img src="${item.image || ''}" alt="${item.name}" class="cart-item-img">
+      <div class="cart-item-info">
+        <strong>${item.name}</strong>
+        <p>Qty: ${item.qty}</p>
+        <p>Price: $${item.price}</p>
+        <p>Total: $${(item.price * item.qty).toFixed(2)}</p>
+      </div>
+      <span class="remove-item" onclick="removeFromCart(${index})">&times;</span>
+    `;
+
+    container.appendChild(div);
+    total += item.price * item.qty;
+  });
+
+  count.textContent = cart.length;
+  totalEl.textContent = total.toFixed(2);
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  saveCart();
+  updateCartDisplay();
+}
+
+function shareCart() {
+  if (cart.length === 0) return alert("Your cart is empty!");
+  const items = cart.map(item => `${item.name} x${item.qty}`).join("\n");
+  const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+  const message = `🛒 My Kruxy Cart:\n${items}\n\nTotal: $${total.toFixed(2)}`;
+  const link = `https://wa.me/9613615661?text=${encodeURIComponent(message)}`;
+  window.open(link, "_blank");
+}
+
+function saveCart() {
+  localStorage.setItem('kruxyCart', JSON.stringify(cart));
+}
+
+function loadCart() {
+  const storedCart = localStorage.getItem('kruxyCart');
+  cart = storedCart ? JSON.parse(storedCart) : [];
+}
+
+function initCart() {
+  loadCart();
+  updateCartDisplay();
+
+  const checkoutBtn = document.querySelector(".checkout-btn");
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", togglePaymentOptions);
+  }
+}
+
+function togglePaymentOptions() {
+  const panel = document.getElementById("paymentOptions");
+  if (panel) panel.classList.toggle("hidden");
+}
+
+document.addEventListener("DOMContentLoaded", initCart);
+let selectedBoxSize = 0;
+
+function selectBoxSize(size) {
+  selectedBoxSize = size;
+  alert(`Box size selected: ${size}g`);
+  // Step 2 logic will hook into this size
+}
+let customBox = {
+  size: 0,
+  contents: [], // { name, grams, color, pricePer100g }
+};
+
+function selectBoxSize(size) {
+  selectedBoxSize = size;
+  document.getElementById("boxMaxWeight").textContent = size;
+  customBox.size = size;
+  customBox.contents = [];
+  updateCustomBoxUI();
+}
+
+function updateCustomBoxUI() {
+  const fill = document.getElementById("boxFill");
+  const summaryList = document.getElementById("boxSummaryList");
+  const totalGrams = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
+  const totalPrice = customBox.contents.reduce((sum, item) => sum + (item.grams * item.pricePer100g / 100), 0);
+
+  // Clear previous summary
+  summaryList.innerHTML = '';
+  fill.innerHTML = '';
+
+ customBox.contents.forEach(item => {
+  // Create list item with + and - buttons
+  const li = document.createElement("li");
+  li.style.display = "flex";
+  li.style.justifyContent = "space-between";
+  li.style.alignItems = "center";
+
+  // Nut image
+  const img = document.createElement("img");
+  img.src = item.image || "default.png";
+  img.alt = item.name;
+  img.style.width = "30px";
+  img.style.height = "30px";
+  img.style.objectFit = "contain";
+  img.style.marginRight = "8px";
+  img.style.borderRadius = "4px";
+
+  // Nut name and grams text
+  const textSpan = document.createElement("span");
+  textSpan.textContent = `${item.name}: ${item.grams}g`;
+  textSpan.style.flexGrow = "1";
+
+  // Buttons container
+  const btnContainer = document.createElement("span");
+
+  // Minus button
+  const minusBtn = document.createElement("button");
+  minusBtn.textContent = "−"; // minus sign
+  minusBtn.style.marginRight = "8px";
+  minusBtn.style.cursor = "pointer";
+  minusBtn.style.width = "24px";
+  minusBtn.style.height = "24px";
+  minusBtn.style.borderRadius = "4px";
+  minusBtn.onclick = () => decrementNut(item.name);
+
+  // Plus button
+  const plusBtn = document.createElement("button");
+  plusBtn.textContent = "+";
+  plusBtn.style.cursor = "pointer";
+  plusBtn.style.width = "24px";
+  plusBtn.style.height = "24px";
+  plusBtn.style.borderRadius = "4px";
+  plusBtn.onclick = () => incrementNut(item.name);
+
+  btnContainer.appendChild(minusBtn);
+  btnContainer.appendChild(plusBtn);
+
+  li.appendChild(img);
+  li.appendChild(textSpan);
+  li.appendChild(btnContainer);
+
+  summaryList.appendChild(li);
+
+  // Update box fill layers (height % by grams / box size)
+  const heightPercent = (item.grams / customBox.size) * 100;
+  const div = document.createElement("div");
+  div.className = 'box-layer';
+  div.style.height = `${heightPercent}%`;
+  div.style.backgroundColor = item.color;
+  div.textContent = item.name;
+  fill.appendChild(div);
+});
+
+
+  document.getElementById("boxTotalWeight").textContent = totalGrams;
+  document.getElementById("boxTotalPrice").textContent = totalPrice.toFixed(2);
+}
+
+function addToCustomBox(nut) {
+  if (!customBox.size) return showAlert("Please select a box size first!")
+
+;
+
+  const total = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
+  const remaining = customBox.size - total;
+
+  if (remaining <= 0) return showAlert("Your Box is FUll !");
+
+  const addGrams = Math.min(remaining, 100); // add 100g at a time
+  const existing = customBox.contents.find(i => i.name === nut.name);
+
+  if (existing) {
+    existing.grams += addGrams;
+  } else {
+    customBox.contents.push({
+      name: nut.name,
+      grams: addGrams,
+      color: nut.color,
+      pricePer100g: nut.pricePer100g,
+      image: nut.image
+    });
+  }
+
+  updateCustomBoxUI();
+}
+
+function addCustomBoxToCart() {
+  if (!customBox.contents.length) return showAlert("Box is empty!");
+
+  const name = "Custom Box: " + customBox.contents.map(i => `${i.name} ${i.grams}g`).join(", ");
+  const price = customBox.contents.reduce((sum, item) => sum + (item.grams * item.pricePer100g / 100), 0);
+
+  const image = "custom-box.png"; // Placeholder
+  const qty = 1;
+
+  cart.push({ name, price: parseFloat(price.toFixed(2)), image, qty });
+  updateCartDisplay();
+  saveCart();
+  showAlert("Box added to cart!");
+}
+let boxSize = 250; // default
+let currentBoxContent = {}; // e.g., { 'Cashew': 100, 'Almond': 150 }
+
+document.getElementById('boxSizeSelector').addEventListener('change', function () {
+  boxSize = parseInt(this.value);
+  adjustBoxSizeVisual(boxSize);
+  redistributeBoxContents(); // optional reset
+});
+function updateBoxVisual() {
+  const boxFill = document.getElementById('boxFill');
+  boxFill.innerHTML = ''; // Clear previous fills
+
+  const totalGrams = Object.values(currentBoxContent).reduce((a, b) => a + b, 0);
+
+  for (const nut in currentBoxContent) {
+    const fillDiv = document.createElement('div');
+    fillDiv.className = 'nut-fill';
+    fillDiv.style.height = (currentBoxContent[nut] / boxSize * 100) + '%';
+    fillDiv.style.backgroundImage = `url(${nutImagesMap[nut] || 'default.png'})`;
+    fillDiv.title = `${nut}: ${currentBoxContent[nut]}g`;
+    boxFill.appendChild(fillDiv);
+  }
+
+  updateBoxSummary();
+}
+const nutImagesMap = {
+  Cashew: 'cashew.webp',
+  Almond: 'almond.png',
+  Pistachio: 'pistachio.png',
+  Walnut: 'walnut.png'
+};
+
+function addToBox(nutName, pricePer100g) {
+  const totalGrams = Object.values(currentBoxContent).reduce((a, b) => a + b, 0);
+
+  if (!currentBoxContent[nutName]) {
+    currentBoxContent[nutName] = 0;
+  }
+
+  if (totalGrams === 0) {
+    currentBoxContent[nutName] = boxSize;
+  } else {
+    // Even split logic
+    const split = boxSize / (Object.keys(currentBoxContent).length + 1);
+    for (const nut in currentBoxContent) {
+      currentBoxContent[nut] = Math.floor(split);
+    }
+    currentBoxContent[nutName] = boxSize - Object.values(currentBoxContent).reduce((a, b) => a + b, 0);
+  }
+
+  updateBoxVisual();
+}
+function decrementNut(nutName) {
+  const nutIndex = customBox.contents.findIndex(item => item.name === nutName);
+  if (nutIndex === -1) return;
+
+  const item = customBox.contents[nutIndex];
+  if (item.grams <= 25) {
+    // Remove nut completely
+    customBox.contents.splice(nutIndex, 1);
+  } else {
+    item.grams -= 25;
+  }
+
+  updateCustomBoxUI();
+}
+function incrementNut(nutName) {
+  const total = customBox.contents.reduce((sum, item) => sum + item.grams, 0);
+  if (total >= customBox.size) {
+    showAlert("Box is already full!");
+    return;
+  }
+
+  const item = customBox.contents.find(i => i.name === nutName);
+  if (!item) return; // Should not happen
+
+  const remaining = customBox.size - total;
+  const addAmount = Math.min(25, remaining);
+  item.grams += addAmount;
+
+  updateCustomBoxUI();
+}
+function showAlert(message) {
+  const alertDiv = document.getElementById("customAlert");
+  const msgP = document.getElementById("customAlertMessage");
+  msgP.textContent = message;
+  alertDiv.classList.add("visible");
+  alertDiv.classList.remove("hidden");
+
+  // Auto-hide after 4 seconds
+  clearTimeout(alertDiv._timeout);
+  alertDiv._timeout = setTimeout(() => {
+    hideAlert();
+  }, 4000);
+}
+
+function hideAlert() {
+  const alertDiv = document.getElementById("customAlert");
+  alertDiv.classList.remove("visible");
+  alertDiv.classList.add("hidden");
+}
+
+</script>
+
+</body>
+</html>

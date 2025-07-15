@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kruxy - Home</title>
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<style>
+    /* ==== LOGIN / SIGNUP STYLES ==== */
+    .home-login-icon {
+      font-size: 22px;
+      cursor: pointer;
+      color: #5e3b1c;
+      margin-left: 15px;
+      position: relative;
+      z-index: 1000;
+    }
+    .home-login-icon:hover {
+      color: #8b5e3c;
+    }
+    .home-login-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+    .home-login-modal.hidden { display: none; }
+    .home-login-box {
+      background: #fffaf5;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+      animation: slideUp 0.3s ease;
+    }
+    .home-login-box h2 {
+      text-align: center;
+      color: #5e3b1c;
+      margin-bottom: 20px;
+    }
+    .home-login-box form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .home-login-box input {
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .home-login-box button {
+      padding: 10px;
+      background-color: #5e3b1c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .home-login-box button:hover {
+      background-color: #472b12;
+    }
+    .home-close-login {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .home-alert-bar, .home-alert-success {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .home-alert-bar {
+      top: 0;
+      background: #f1f9f3;
+      border: 1px solid #7ac27a;
+      color: #1a4d1a;
+      padding: 14px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .home-alert-success {
+      top: 20px;
+      background: #e6f8ec;
+      border-left: 6px solid #28a745;
+      padding: 15px 20px;
+      color: #155724;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex-direction: column;
+      gap: 10px;
+    }
+    .home-alert-bar button, .home-alert-success button {
+      padding: 6px 12px;
+      background-color: #5e3b1c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .home-alert-bar button:hover, .home-alert-success button:hover {
+      background-color: #472b12;
+    }
+    .home-alert-bar.hidden, .home-alert-success.hidden {
+      display: none;
+    }
+
+    .home-login-loading-bar {
+      width: 100%;
+      height: 6px;
+      background: #d4edda;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .home-login-loading-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #28a745;
+      transition: width 3s linear;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+<div id="home-alertBar" class="home-alert-bar hidden">
+    <span>✅ You’ve successfully signed up!</span>
+    <button onclick="homeOpenLogin()">Login Now</button>
+  </div>
+
+  <!-- ✅ Login Success Alert -->
+  <div id="home-loginSuccessAlert" class="home-alert-success hidden">
+    <p>✅ Login successful!</p>
+    <div class="home-login-loading-bar">
+      <div class="home-login-loading-fill"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="08.07.2025_13.00.57_REC-removebg-preview (1).png" alt="Kruxy Logo" />
+      </div>
+
+      <div class="menu-icon" onclick="toggleMenu()">
+        &#9776;
+      </div>
+    <nav class="navbar">
+        <ul id="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="#about">About Kruxy</a></li>
+          <li><a href="cans.html">Cans</a></li>
+          <li><a href="spreads.html">Spreads & Chocolate</a></li>
+          <li><a href="zipper.html">Zipper bags</a></li>
+          <li><a href="All_items.html">All Items</a></li>
+          <li><a href="#contact">Contact</a></li>
+          
+        </ul>
+      </nav>
+          <div class="home-login-icon" onclick="toggleHomeSignupModal()">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <section class="hero">
+      <h1>Welcome to Kruxy</h1>
+      <p>Finest selection of natural and roasted nuts</p>
+    </section>
+  </main>
+
+  <!--4 Big Divs-->
+<section class="product-grid">
+  <div class="product-card" data-href="cans.html" data-alt="can2.png">
+    <img src="Can1.png" alt="Can" />
+    <div class="product-title">View Cans</div>
+  </div>
+
+  <div class="product-card" data-href="spreads.html" data-alt="choco1-removebg-preview.png">
+    <img src="spread1.png" alt="Spread" />
+    <div class="product-title">View Spreads & Chocolate</div>
+  </div>
+
+  <div class="product-card" data-href="zipper.html" data-alt="zipperBag2.webp">
+    <img src="zipperBag1.png" alt="Zipper Bags" />
+    <div class="product-title">View Zipper Bags</div>
+  </div>
+
+  <div class="product-card" data-href="mix.html" data-alt="nuts2.avif">
+    <img src="all.webp" alt="Mix" />
+    <div class="product-title">Make Your Own Mix</div>
+  </div>
+</section>
+
+
+
+<!--ABout us section-->
+<section class="about-section" id="about">
+  <div class="about-box">
+    <h2>About Kruxy</h2>
+    <p>
+      Kruxy is a Lebanese industrial company, a pioneer in the manufacture and packaging, and marketing of all types of nuts and its derivatives, packaging of all types of dried fruit, and coffee trade in all its forms, in addition to manufacturing, packaging all kinds and types of chocolate, and providing the best luxury chocolate for all occasions.
+    </p>
+    <p>
+      <strong>Announce coming events</strong><br>
+      At Kruxy, we believe that the best food comes from the best ingredients. That's why we work closely with local farmers and suppliers to source the freshest and highest quality ingredients for all of our dishes. Come and taste the difference for yourself.
+    </p>
+    <p>
+      <strong>Display real testimonials</strong><br>
+      Kruxy Company was able to be among the leading companies in the field of nuts manufacturing, and it provides the markets with its diverse and distinguished products, thanks to the concerted efforts of curators, supervisors and specialized experts, especially the establisher Bu Ali AL MASRI and his brothers, who are specialists in this field.
+    </p>
+  </div>
+</section>
+
+  <!-- Nut rain -->
+  <div class="nut-rain" id="nutRainContainer"></div>
+
+  <!--footer-->
+<footer class="footer">
+  <div class="footer-grid">
+    <!-- Column 1: Branding + Social -->
+    <div class="footer-column brand-social">
+      <p class="trademark">© 2025 Kruxy. All rights reserved.</p>
+      <div class="social-icons" id="contact">
+        <a href="https://wa.me/9613615661" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/Kruxylb" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/kruxy" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/Kruxylb" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+
+    <!-- Column 2: Links -->
+    <div class="footer-column quick-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="become_our_partner.html">Become Our Partner</a></li>
+        <li><a href="shipping.html">Shipping Info</a></li>
+
+      </ul>
+    </div>
+
+    
+
+    <!-- Column 3: Subscribe -->
+    <div class="footer-column subscribe">
+      <p class="discount-text">🎁 Get 10% Off Your First Order!</p>
+      <form class="discount-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+<div id="emailSuccess" class="email-success hidden">
+  <div class="success-box">
+    <p>Thanks! We're processing your subscription...</p>
+    <div class="loading-bar">
+      <div class="loading-fill"></div>
+    </div>
+  </div>
+</div>
+<!--Whatsapp Icon-->
+<a href="https://wa.me/9613615661" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!--Catalogues-->
+<div class="catalogue-float" onclick="toggleCatalogue()">
+  <i class="fas fa-book"></i>
+  <span>Catalogue</span>
+</div>
+
+<div class="catalogue-options" id="catalogueOptions">
+  <a href="./data/catalogue spread and chocolate bar kruxy_.pdf" target="_blank">Spreads & Chocolate</a>
+  <a href="./data/Catalogue Nuts Kruxy_.pdf" target="_blank">Nuts</a>
+</div>
+
+
+
+
+<div class="catalogue-options" id="catalogueOptions">
+  <a href="Cataloge_spread_and_chocolate_bar_kruxy_.pdf" target="_blank">Spreads & Chocolate</a>
+  <a href="Catalogue_Nuts_kruxy_.pdf" target="_blank">Nuts</a>
+</div>
+
+<!-- Cart Panel -->
+<div class="cart-panel hidden" id="cartPanel">
+  <span class="cart-close-btn" onclick="closeCart()">×</span>
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+  <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+  <div class="cart-currency-converter">
+  <label for="cartCurrency">Convert Total To:</label>
+  <select id="cartCurrency">
+    <option value="usd">$ USD</option>
+    <option value="lbp">LBP</option>
+    <option value="eur">€ EUR</option>
+    <option value="sar">SAR</option>
+  </select>
+  <div id="convertedTotal"></div>
+</div>
+
+  <button class="share-cart-btn" onclick="shareCart()">Share Your Cart on WhatsApp</button>
+  <button class="checkout-btn" onclick="togglePaymentOptions()">Proceed to Checkout</button>
+
+<div id="paymentOptions" class="payment-options hidden">
+  <a href="https://www.visa.com/" target="_blank" title="Pay with Visa">
+    <i class="fab fa-cc-visa"></i>
+  </a>
+  <a href="https://www.wish.com/payment" target="_blank" title="Pay with Wish Money">
+    <i class="fas fa-gift"></i>
+  </a>
+  <a href="https://www.paypal.com/checkoutnow" target="_blank" title="Pay with PayPal">
+    <i class="fab fa-cc-paypal"></i>
+  </a>
+   <a href="#" onclick="handleCashOnDelivery()" title="Cash on Delivery">
+    <i class="fas fa-truck"></i>
+  </a>
+</div>
+
+
+</div>
+
+<!-- Cart Icon -->
+<div class="cart-icon" onclick="toggleCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cartCount">0</span>
+</div>
+
+
+<div id="home-loginModal" class="home-login-modal hidden">
+    <div class="home-login-box">
+      <span class="home-close-login" onclick="toggleHomeSignupModal()">×</span>
+      <h2>Become a Member</h2>
+      <p style="text-align:center; font-size:14px; margin-bottom:10px;">
+        Get exclusive access, deals & discounts!
+      </p>
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ✨ LOGIN MODAL -->
+  <div id="home-loginFormModal" class="home-login-modal hidden">
+    <div class="home-login-box">
+      <span class="home-close-login" onclick="toggleHomeLoginModal()">×</span>
+      <h2>Login</h2>
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+  <!-- Script -->
+  <script src="home.js"></script>
+  <script>
+    function toggleHomeSignupModal() {
+      document.getElementById("home-loginModal").classList.toggle("hidden");
+    }
+
+    function toggleHomeLoginModal() {
+      document.getElementById("home-loginFormModal").classList.toggle("hidden");
+    }
+
+    function homeOpenLogin() {
+      document.getElementById("home-alertBar").classList.add("hidden");
+      document.getElementById("home-loginFormModal").classList.remove("hidden");
+    }
+
+    // Submit Sign Up
+    document.querySelector('#home-loginModal form')?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById("home-loginModal").classList.add("hidden");
+      document.getElementById("home-alertBar").classList.remove("hidden");
+      setTimeout(() => {
+        document.getElementById("home-alertBar").classList.add("hidden");
+      }, 6000);
+    });
+
+    // Submit Login
+// Submit Login
+document.querySelector('#home-loginFormModal form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const alert = document.getElementById("home-loginSuccessAlert");
+  const bar = alert.querySelector('.home-login-loading-fill');
+
+  // Hide and reset modal
+  document.getElementById("home-loginFormModal").classList.add("hidden");
+
+  // Reset the bar instantly without animation
+  bar.style.transition = 'none';
+  bar.style.width = '0%';
+
+  // Show the alert BEFORE animation starts
+  alert.classList.remove("hidden");
+
+  // Use requestAnimationFrame to wait one frame (ensures CSS reflow)
+  requestAnimationFrame(() => {
+    // Now trigger the animation
+    bar.style.transition = 'width 3s linear';
+    bar.style.width = '100%';
+
+    // Hide alert after animation completes
+    setTimeout(() => {
+      alert.classList.add("hidden");
+    }, 3200);
+  });
+});
+
+
+  </script>
+</body>
+</html>
