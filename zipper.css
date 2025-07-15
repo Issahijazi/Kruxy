@@ -742,6 +742,7 @@ header {
   background: red;
   font-size: 12px;
   color: white;
+
   padding: 2px 6px;
   border-radius: 50%;
   position: absolute;
@@ -1413,8 +1414,60 @@ header {
   .add-to-cart:hover {
     background-color: #8b5e3c;
   }
-  .card-back {
-    max-height: 400px; /* or something that fits your layout */
-    overflow-y: auto;
-  }
+.card-back {
+  max-height:100%;      /* Limit the height */
+  overflow-y: auto;       /* Enable vertical scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+  scrollbar-width: thin;  /* For Firefox: thin scrollbar */
+  scrollbar-color: #8b5e3c #f1f1f1; /* Scrollbar thumb and track colors */
+}
+
+/* Webkit browsers scrollbar styling */
+.card-back::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-back::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.card-back::-webkit-scrollbar-thumb {
+  background-color: #8b5e3c;
+  border-radius: 4px;
+  border: 2px solid #f1f1f1;
+}
+  /* Cart Icon */
+.cart-icon {
+  position: fixed;
+  top: 180px;
+  left:20px;
+  background-color: rgba(94, 59, 28, 0.85);
+  backdrop-filter: blur(2px);
+  color: white;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+}
+
+.cart-icon span {
+  background: red;
+  font-size: 12px;
+  color: white;
+  
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
 }
