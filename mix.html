@@ -82,6 +82,8 @@ header {
   font-size: 30px;
   cursor: pointer;
   color: #333;
+  order: -1; /* Push it to the left */
+  margin-right: 15px;
 }
 
 .login-icon {
@@ -89,7 +91,7 @@ header {
   color: #333;
   cursor: pointer;
   padding: 10px;
-  margin-left: 15px;
+  margin-left: auto;
   margin-right: 5px;
 }
 
@@ -631,6 +633,11 @@ header {
 <!-- HEADER -->
 <header>
   <div class="container">
+    <!-- ✅ Move menu icon here, before logo -->
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+
     <div class="logo">
       <a href="index.html"><img src="logo.png" alt="Kruxy Logo" /></a>
     </div>
@@ -651,6 +658,8 @@ header {
     </div>
   </div>
 </header>
+
+
 
 
 <!-- HERO -->
