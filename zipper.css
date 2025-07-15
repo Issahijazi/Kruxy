@@ -1415,7 +1415,7 @@ header {
     background-color: #8b5e3c;
   }
 .card-back {
-  height: 400px; /* or 60vh */     /* Limit the height */
+  height: 100%; /* or 60vh */     /* Limit the height */
   overflow-y: auto;       /* Enable vertical scrolling */
   -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
   scrollbar-width: thin;  /* For Firefox: thin scrollbar */
