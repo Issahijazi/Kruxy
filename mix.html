@@ -679,7 +679,11 @@ html, body {
   overflow-x: hidden; /* 💥 Prevent horizontal scrolling */
   max-width: 100vw;    /* 💥 Prevent content from exceeding screen width */
 }
-
+.cart-panel #cartItems {
+  max-height: calc(100vh - 200px); /* Leaves space for title, total, and buttons */
+  overflow-y: auto;
+  padding-right: 5px; /* optional scrollbar spacing */
+}
 
 </style>
 <body>
