@@ -626,27 +626,48 @@ header {
   to { transform: scale(1); }
 }
 @media (max-width: 768px) {
+  .nut-products-section {
+    padding: 30px 15px;
+  }
+
   .nut-products-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px 16px; /* vertical | horizontal gap */
+    justify-items: center;
+    padding: 0 5px;
+  }
+
+  .nut-card {
+    width: 100%;
+    max-width: 160px;
+    padding: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+
+  .nut-card img {
+    height: 90px;
+    margin-bottom: 10px;
+  }
+
+  .nut-card h4 {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  .nut-card .price {
+    font-size: 13px;
+    margin: 5px 0;
+  }
+
+  .nut-card button {
+    font-size: 13px;
+    padding: 6px 10px;
   }
 }
 
-@media (max-width: 480px) {
-  .nut-products-grid {
-    grid-template-columns: repeat(2, 1fr); /* Keep 2 on very small phones */
-  }
-}
-@media (max-width: 768px) {
-  .nut-products-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 per row on mid screens */
-  }
-}
-
-@media (max-width: 500px) {
-  .nut-products-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row on small phones */
-  }
-}
 
 
 </style>
