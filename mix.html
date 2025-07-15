@@ -625,6 +625,28 @@ header {
 @keyframes scaleIn {
   to { transform: scale(1); }
 }
+@media (max-width: 768px) {
+  .nut-products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .nut-products-grid {
+    grid-template-columns: repeat(2, 1fr); /* Keep 2 on very small phones */
+  }
+}
+@media (max-width: 768px) {
+  .nut-products-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 per row on mid screens */
+  }
+}
+
+@media (max-width: 500px) {
+  .nut-products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on small phones */
+  }
+}
 
 
 </style>
