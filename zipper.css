@@ -237,6 +237,9 @@ header {
 
 .card-back {
   transform: rotateY(180deg);
+  -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
+  overflow-y: auto;
+  touch-action: pan-y; /* allow vertical touch scrolling */
 }
 
 
