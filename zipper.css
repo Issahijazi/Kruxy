@@ -1460,7 +1460,7 @@ header {
 }
 
 .cart-icon span {
-  background: red;
+  background: rgb(0, 255, 174);
   font-size: 12px;
   color: white;
   
