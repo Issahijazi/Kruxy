@@ -1340,3 +1340,73 @@ header {
   transition: outline 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .product-card {
+    height: 600px; /* fix height so layout is consistent */
+  }
+.nutrition-img {
+  width: 100%;              /* take full width of card */
+  max-width: 250px;         /* limit max size to avoid overflow */
+  max-height: 70%;          /* larger than before */
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+  .card-front {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+  .product-card img {
+    max-height: 280px;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto 12px;
+    display: block;
+  }
+
+  .product-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+    color: #333;
+  }
+
+  .product-info {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .flip-trigger {
+    font-size: 15px;
+    color: #8b5e3c;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-bottom: 12px;
+  }
+
+  .add-to-cart {
+    margin-top: auto; /* push button to bottom */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #5e3b1c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 280px;
+    align-self: center;
+  }
+
+  .add-to-cart:hover {
+    background-color: #8b5e3c;
+  }
+}
